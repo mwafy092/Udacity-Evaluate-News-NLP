@@ -7,12 +7,22 @@ module.exports = {
     mode: 'production',
     // entry point for webpack
     entry: './src/client/index.js',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     module: {
         rules: [
             {
+                // babel loader
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
+            },
+            {
+                // sass loader
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },

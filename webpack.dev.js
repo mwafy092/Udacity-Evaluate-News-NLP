@@ -8,6 +8,10 @@ module.exports = {
     mode: 'development',
     // entry point for webpack
     entry: './src/client/index.js',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     module: {
         rules: [
             {
