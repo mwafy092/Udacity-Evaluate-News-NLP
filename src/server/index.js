@@ -23,7 +23,3 @@ app.listen(port, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
-
-let textAPI = new MeanCloud({
-    app_key: process.env.API_KEY
-}) 
