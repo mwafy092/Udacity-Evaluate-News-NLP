@@ -1,6 +1,8 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express()
 
@@ -21,3 +23,7 @@ app.listen(port, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+let textAPI = new MeanCloud({
+    app_key: process.env.API_KEY
+}) 
