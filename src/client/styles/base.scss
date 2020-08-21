@@ -1,5 +1,6 @@
+$displayMode: flex;
 body {
-    display: flex;
+    display: $displayMode;
     flex-direction: column;
     min-height: 100vh;
 }
