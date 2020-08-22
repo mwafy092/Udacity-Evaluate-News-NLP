@@ -1,5 +1,3 @@
-import fetch from "node-fetch"
-
 export function handleSubmit(event) {
     event.preventDefault()
 
@@ -12,5 +10,11 @@ export function handleSubmit(event) {
         .then(function (res) {
             document.getElementById('results').innerHTML = res.message
         })
-}
+    fetch('/test')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById('results').innerHTML = data[0].irony
+        })
 
+}

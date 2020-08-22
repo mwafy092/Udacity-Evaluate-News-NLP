@@ -2,5 +2,8 @@ $textPosition: center;
 footer { 
     p {
         text-align: $textPosition;
+        margin: 1rem;
+        text-transform: uppercase;
+        color: #444;
     }
 }
