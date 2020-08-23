@@ -39,3 +39,17 @@ section {
         margin: 0.5rem 0;
     }
 }
+
+.results {
+    ul {
+        li {
+            margin: 0.5rem;
+            color: deepskyblue;
+            font-weight: 400;
+            text-transform: uppercase;
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+}
