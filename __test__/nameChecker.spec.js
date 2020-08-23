@@ -2,10 +2,10 @@ import { checkForName } from "../src/client/js/nameChecker"
 
 describe('Testing Valid url', () => {
     test('it should match the expected URL', () => {
-        const urlFormat = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm;
+        const regex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
         //  the input should be presented
         const urlTest = 'http://facebook.com/';
-        expect(urlFormat.test(urlTest)).toBe(true);
+        expect(regex.test(urlTest)).toBe(true);
     });
 });
 
