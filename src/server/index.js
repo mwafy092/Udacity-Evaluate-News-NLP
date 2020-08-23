@@ -50,23 +50,22 @@ app.get('/api', function (req, res) {
 let API_KEY = process.env.API_KEY;
 let baseURL = `https://api.meaningcloud.com/sentiment-2.1?key=${API_KEY}&of=json&lang=en&model=general&txt=`
 
-let apiData = [];
-app.post('/apiData', (request, response) => {
+app.post('/apiData', async (request, response) => {
     let userInput = request.body.url;
-    console.log(userInput)
-    getAPIData(baseURL + userInput)
+    let data = await getAPIData(baseURL + userInput)
+    response.json({
+        userInput: userInput,
+        apiData: data
+    })
 })
 
 let getAPIData = async (baseURL) => {
     const request = await fetch(baseURL);
     try {
         const data = await request.json();
-        apiData.push(data);
-        console.log(data)
+        return data;
     }
     catch (error) {
         console.log(error);
     }
 }
-
-    ;

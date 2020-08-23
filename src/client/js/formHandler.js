@@ -18,8 +18,7 @@ export function handleSubmit(event) {
     fetch('http://localhost:8000/apiData', options)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            document.getElementById('results').innerHTML = data[0].irony
+            // TODO
         })
 
 }
