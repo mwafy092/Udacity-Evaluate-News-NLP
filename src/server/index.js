@@ -19,6 +19,8 @@ const MeaningCloud = require('meaning-cloud')
 // env file config
 const dotenv = require('dotenv');
 const { default: fetch } = require('node-fetch')
+const { ppid } = require('process')
+const { urlencoded } = require('body-parser')
 dotenv.config();
 
 
@@ -45,23 +47,26 @@ app.get('/api', function (req, res) {
 */
 
 // using our API KEY
-let appData = [];
 let API_KEY = process.env.API_KEY;
-let baseURL = `https://api.meaningcloud.com/sentiment-2.1?key=${API_KEY}&lang=en&model=general&txt=https://www.nytimes.com/2020/08/22/us/politics/usps-bill-congress-vote.html`
+let baseURL = `https://api.meaningcloud.com/sentiment-2.1?key=${API_KEY}&of=json&lang=en&model=general&txt=`
+
+let apiData = [];
+app.post('/apiData', (request, response) => {
+    let userInput = request.body.url;
+    console.log(userInput)
+    getAPIData(baseURL + userInput)
+})
 
 let getAPIData = async (baseURL) => {
     const request = await fetch(baseURL);
     try {
         const data = await request.json();
-        // console.log(data);
-        appData.push(data);
+        apiData.push(data);
+        console.log(data)
     }
     catch (error) {
         console.log(error);
     }
 }
-getAPIData(baseURL);
-app.get('/test', (request, response) => {
-    response.send(appData);
-})
 
+    ;
